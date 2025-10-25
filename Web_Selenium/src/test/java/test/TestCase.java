@@ -22,14 +22,14 @@ public class TestCase extends BaseTest {
         RankingPage rankingPage = new RankingPage(getDriver());
 
         //
-        ExtentLogger.info("Open web: " + data.VUONG_BAN_LOC_URL);
-        DriverManager.getDriver().get(data.VUONG_BAN_LOC_URL);
+        ExtentLogger.info("Open web: " + data.LOGIN_PAGE_URL);
+        DriverManager.getDriver().get(data.LOGIN_PAGE_URL);
 
         ExtentLogger.info("Verify quick access menu:");
         homePage.verifyQuickAccessMenu(data.buildMenuQuickAccessItem());
 
         ExtentLogger.info("Select Lips's product by menu: " + data.LIPS);
-        DriverManager.getDriver().quit();
+
 
 //        homePage.searchByCategory(data.LIPS);
 //
@@ -62,20 +62,6 @@ public class TestCase extends BaseTest {
 //
 //        ExtentLogger.info(("Click Yes to process to next page:"));
 //        rankingPage.click("Yes");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

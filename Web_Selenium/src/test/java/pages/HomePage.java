@@ -10,7 +10,7 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
-    @FindBy(css = "#ast-hf-menu-1 > li")
+    @FindBy(css = "#menu-primary-items > li")
     private List<WebElement> quickAccessList;
 
     private By xDynamicMenuBars(String title) {

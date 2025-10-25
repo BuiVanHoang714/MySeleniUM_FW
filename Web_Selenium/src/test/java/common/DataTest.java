@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataTest {
-    public final String VUONG_BAN_LOC_URL = "https://vuongbanloc.com/";
+    public final String LOGIN_PAGE_URL = "https://practicetestautomation.com/practice-test-login/";
 
     public final String HIGH_TO_LOW = "Price: high to low";
 
@@ -18,10 +18,10 @@ public class DataTest {
 
     public List<String> buildMenuQuickAccessItem() {
         List<String> ret = new ArrayList<>();
-        ret.add("Home");
-        ret.add("Sản Phẩm");
-        ret.add("Cart");
-        ret.add("About");
+        ret.add("HOME");
+        ret.add("PRACTICE");
+        ret.add("Courses");
+        ret.add("Blog");
         ret.add("Contact");
         return ret;
     }

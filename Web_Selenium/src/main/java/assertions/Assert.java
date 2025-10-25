@@ -9,7 +9,7 @@ public class Assert {
 
     public void assertEquals(final String actual, final String expected, final String description, boolean isHard) {
         if (actual.equals(expected)) {
-            ExtentLogger.pass(formatPassEqualMsg(expected, description));
+            ExtentLogger.pass(formatPassEqualMsg(actual, expected, description));
         } else {
             if (!isHard) {
                 ExtentLogger.fail(formatFailEqualMsg(actual, expected, description), true);
@@ -33,7 +33,7 @@ public class Assert {
 
     public void assertEquals(final int actual, final int expected, final String description, boolean isHard) {
         if (actual == expected) {
-            ExtentLogger.pass(formatPassEqualMsg(String.valueOf(expected), description));
+            ExtentLogger.pass(formatPassEqualMsg(String.valueOf(actual), String.valueOf(expected), description));
         } else {
             if (!isHard) {
                 ExtentLogger.fail(formatFailEqualMsg(String.valueOf(actual), String.valueOf(expected), description), true);
@@ -45,7 +45,7 @@ public class Assert {
 
     public void assertEquals(final double actual, final double expected, final String description, boolean isHard) {
         if (actual == expected) {
-            ExtentLogger.pass(formatPassEqualMsg(String.valueOf(expected), description));
+            ExtentLogger.pass(formatPassEqualMsg(String.valueOf(actual), String.valueOf(expected), description));
         } else {
             if (!isHard) {
                 ExtentLogger.fail(formatFailEqualMsg(String.valueOf(actual), String.valueOf(expected), description), true);
@@ -56,9 +56,10 @@ public class Assert {
     }
 
 
-    private static String formatPassEqualMsg(String expected, String description) {
-        return String.format("%s+ %s %s.", TAB, description, expected);
-
+    //private static String formatPassEqualMsg(String expected, String description) {
+    private static String formatPassEqualMsg(String actual, String expected, String description) {
+        //return String.format("%s+ %s %s.", TAB, description, expected);
+        return String.format("%s+ %s%s%s- Expected: %s%s%s- Actual: %s", TAB, description, NEW_LINE, TAB + TAB, expected, NEW_LINE, TAB + TAB, actual);
     }
 
     private static String formatFailEqualMsg(String actual, String expected, String description) {
