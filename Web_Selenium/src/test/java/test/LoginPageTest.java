@@ -7,11 +7,11 @@ import pages.*;
 import reports.ExtentLogger;
 import common.DataTest;
 
-public class TestCase extends BaseTest {
+public class LoginPageTest extends BaseTest {
 
 
     @Test()
-    public void Test_Case() {
+    public void Test_Case_Login() {
         // init data
         DataTest data = new DataTest();
         // init page
