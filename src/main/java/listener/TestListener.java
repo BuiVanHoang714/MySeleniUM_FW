@@ -7,12 +7,24 @@ import reports.ExtentLogger;
 import reports.ExtentReport;
 import utilities.FilesUtil;
 
-public class TestListener implements ITestListener{
+import java.io.File;
 
+public class TestListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext result) {
-        FilesUtil.cleanFolder("./ExtentReport");
+        // Base path = user.dir giống với ExtentReport
+        String baseDir = System.getProperty("user.dir");
+        String reportDirPath = baseDir + File.separator + "ExtentReport";
+
+        System.out.println("[TestListener] cleaning folder: " + reportDirPath);
+
+        // Chỉ clean nếu thư mục tồn tại, tránh tool bên dưới ném lỗi
+        File reportDir = new File(reportDirPath);
+        if (reportDir.exists()) {
+            FilesUtil.cleanFolder(reportDirPath);
+        }
+
         ExtentReport.initReports();
     }
 
@@ -24,7 +36,7 @@ public class TestListener implements ITestListener{
 
     @Override
     public void onTestStart(ITestResult result) {
-       ExtentReport.createTest(result.getMethod().getMethodName().replaceAll("_", " "));
+        ExtentReport.createTest(result.getMethod().getMethodName().replaceAll("_", " "));
     }
 
     @Override
@@ -34,7 +46,7 @@ public class TestListener implements ITestListener{
 
     @Override
     public void onTestFailure(ITestResult result) {
-      doTestFail(result, true);
+        doTestFail(result, true);
     }
 
     @Override
@@ -47,8 +59,8 @@ public class TestListener implements ITestListener{
 
     }
 
-    public static void doTestFail(ITestResult result, boolean isScreenShotNeeded){
-        String exceptionMessage =  result.getThrowable().toString();
+    public static void doTestFail(ITestResult result, boolean isScreenShotNeeded) {
+        String exceptionMessage = result.getThrowable().toString();
         String message = "<details><summary><b><font color=red> Exception occured, click to see details: "
                 + " </font></b>" + "</summary>" + exceptionMessage.replaceAll(",", "<br>")
                 + "</details> \n";
@@ -56,15 +68,14 @@ public class TestListener implements ITestListener{
         ExtentLogger.fail(logText + "<br>" + message, isScreenShotNeeded);
     }
 
-    public static void doTestPass(ITestResult result, boolean isScreenShotNeeded){
+    public static void doTestPass(ITestResult result, boolean isScreenShotNeeded) {
         String logText = "<b>" + result.getMethod().getMethodName() + " is passed.</b>";
         ExtentLogger.pass(logText, isScreenShotNeeded);
     }
 
-    public static void doTestSkip(ITestResult result){
+    public static void doTestSkip(ITestResult result) {
         String logText = "<b>" + result.getMethod().getMethodName() + " is skipped.</b>";
         ExtentLogger.skip(logText);
     }
 
 }
-
