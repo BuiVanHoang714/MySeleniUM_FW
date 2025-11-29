@@ -24,7 +24,7 @@ public class ElementUtil {
         return driver.findElement(locator);
     }
 
-    public List<String> actualListbyText(List<WebElement> elements) {
+    public List<String> actualListByText(List<WebElement> elements) {
         List<String> actuaList = new ArrayList<>();
         for (WebElement webElement : elements) {
             if (!(webElement.getText().isEmpty())) {

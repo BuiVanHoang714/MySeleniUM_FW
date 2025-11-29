@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BasePage extends bases.BasePage {
     public BasePage(WebDriver driver) {
@@ -17,3 +16,5 @@ public class BasePage extends bases.BasePage {
         elementUtil.selectByLoopText(elementUtil.getElements(xDynamicMenuBars(title)), title);
     }
 }
+
+

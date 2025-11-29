@@ -12,6 +12,7 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "#menu-primary-items > li")
     private List<WebElement> quickAccessList;
+    
 
     private By xDynamicMenuBars(String title) {
         return By.xpath(String.format("//a[normalize-space(text()) = '%s']", title));

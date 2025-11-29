@@ -7,7 +7,7 @@ import pages.*;
 import reports.ExtentLogger;
 import common.DataTest;
 
-public class LoginPageTest extends BaseTest {
+public final class LoginPageTest extends BaseTest {
 
 
     @Test()

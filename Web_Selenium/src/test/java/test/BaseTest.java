@@ -1,18 +1,19 @@
 package test;
 
-import drivers.DriverManager;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+/**
+ * Test Package Base Test Class
+ * Extends from bases.BaseTest to inherit all common test functionality
+ * Can be used to add additional test-specific setup/teardown if needed
+ */
+public class BaseTest extends bases.BaseTest {
 
-public class BaseTest {
-    @BeforeMethod
-    public void setUpMethod() {
-        // Any setup before each test method can be added here
+    /**
+     * Constructor
+     */
+    public BaseTest() {
+        super();
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        // Any cleanup after each test method can be added here
-        DriverManager.getDriver().quit();
-    }
+
 }
+
